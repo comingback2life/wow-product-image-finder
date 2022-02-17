@@ -19,7 +19,7 @@
         </h1>
         <sub class="text-center" >Woolworths Image Finder</sub>
         <div class="card-body">
-          <input type="text" class="form-control mb-2" placeholder="Enter Product ID" name="productID" required>
+          <input type="text" class="form-control mb-2" placeholder="Enter Product ID" id="productID" onchange="idGetter(this)"required>
           <button class="btn btn-success w-100" onClick="handleOnFetch(this)"> Find Image</button>
         </div>
       </div>

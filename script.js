@@ -1,8 +1,9 @@
-let productID=document.getElementsByName('productID')
 const imageURL = 'https://cdn0.woolworths.media/content/wowproductimages/medium/757750.jpg';
 const placeHolder= document.getElementById('holder');
 let str="";
 const handleOnFetch=()=>{
+  let identity=document.getElementById('productID').value
+  console.log(identity)
   fetch(imageURL)
   .then(data=>{
     let productUrl = data.url
@@ -22,5 +23,9 @@ const displayImage=(url)=>{
   <button class="btn btn-success w-100" onClick="handleOnFetch(this)"> Find Image</button>
   </div>
 </div>`
-placeHolder.innerHTML=str;
+  placeHolder.innerHTML=str;
+}
+
+const idGetter = (abc)=>{
+  console.log(`this is abc ${abc}`)
 }
