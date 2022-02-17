@@ -2,7 +2,7 @@ const imageURL = 'https://cdn0.woolworths.media/content/wowproductimages/medium/
 const placeHolder= document.getElementById('holder');
 let str="";
 const handleOnFetch=()=>{
-  let identity=document.getElementById('productID').value
+  const identity=document.querySelector('.productID').value
   console.log(identity)
   fetch(imageURL)
   .then(data=>{
@@ -19,7 +19,7 @@ const displayImage=(url)=>{
   <sub class="text-center">Woolworths Image Finder</sub>
   <img src="${url}" class="card-img-top mt-5" alt="...">
   <div class="card-body">
-  <input type="text" class="form-control mb-2" placeholder="Enter Product ID" required>
+  <input type="text" class="form-control mb-2 productID" placeholder="Enter Product ID" required>
   <button class="btn btn-success w-100" onClick="handleOnFetch(this)"> Find Image</button>
   </div>
 </div>`
