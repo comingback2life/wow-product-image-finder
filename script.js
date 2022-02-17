@@ -1,26 +1,29 @@
-const imageURL = 'https://cdn0.woolworths.media/content/wowproductimages/medium/757750.jpg';
+let imageURL = ''; 
 const placeHolder= document.getElementById('holder');
-
+const alertBox = document.getElementById('alertBox');
+let productID;
 let str="";
 const handleOnFetch=()=>{
-  const identity=document.querySelector('.productID').value
-  console.log(identity)
-  fetch(imageURL)
-  .then(data=>{
-    let productUrl = data.url
-    displayImage(productUrl)
-   
-  })
-
+  const productCode=document.querySelector('.productID').value;
+  console.log(!productCode)
+  if(!productCode){
+    alertBox.classList.remove('d-none');
+  }else{
+    productID=productCode;
+    imageURL=`https://cdn0.woolworths.media/content/wowproductimages/medium/${productID}.jpg`;
+    fetch(imageURL)
+    .then(data=>{
+      let productUrl = data.url;
+      displayImage(productUrl,productID);
+    })
+  }
 }
-const displayImage=(url)=>{
+const displayImage=(url,productCode)=>{
   const getTheBox = document.getElementById('holderCard');
   const getLink = document.querySelector('#urlbar');
- 
-  console.log(getTheBox)
   if(getTheBox){
-    console.log(getLink.getAttribute('src'));
-    //getTheBox.img.src="https://cdn0.woolworths.media/content/wowproductimages/medium/757751.jpg"
+    const newUrl= `https://cdn0.woolworths.media/content/wowproductimages/medium/${productCode}.jpg`;
+    getLink.setAttribute('src',newUrl);
   }else{
     str+=` <div class="card" id="holderCard" style="width: 18rem;">
     <h1 class=" text-center midOne mt-2">
@@ -33,10 +36,10 @@ const displayImage=(url)=>{
     <button class="btn btn-success w-100" onClick="handleOnFetch(this)"> Find Image</button>
     </div>
   </div>`
-}
   placeHolder.innerHTML=str;
 }
 
-const idGetter = (abc)=>{
-  console.log(`this is abc ${abc}`)
+}
+const hideAlert=()=>{
+  alertBox.classList.add('d-none');
 }
