@@ -1,5 +1,6 @@
 const imageURL = 'https://cdn0.woolworths.media/content/wowproductimages/medium/757750.jpg';
 const placeHolder= document.getElementById('holder');
+
 let str="";
 const handleOnFetch=()=>{
   const identity=document.querySelector('.productID').value
@@ -8,21 +9,31 @@ const handleOnFetch=()=>{
   .then(data=>{
     let productUrl = data.url
     displayImage(productUrl)
+   
   })
 
 }
 const displayImage=(url)=>{
-  str+=` <div class="card" style="width: 18rem;">
-  <h1 class=" text-center midOne">
-    <i class="fa-solid fa-magnifying-glass text-success"></i>
-  </h1>
-  <sub class="text-center">Woolworths Image Finder</sub>
-  <img src="${url}" class="card-img-top mt-5" alt="...">
-  <div class="card-body">
-  <input type="text" class="form-control mb-2 productID" placeholder="Enter Product ID" required>
-  <button class="btn btn-success w-100" onClick="handleOnFetch(this)"> Find Image</button>
-  </div>
-</div>`
+  const getTheBox = document.getElementById('holderCard');
+  const getLink = document.querySelector('#urlbar');
+ 
+  console.log(getTheBox)
+  if(getTheBox){
+    console.log(getLink.getAttribute('src'));
+    //getTheBox.img.src="https://cdn0.woolworths.media/content/wowproductimages/medium/757751.jpg"
+  }else{
+    str+=` <div class="card" id="holderCard" style="width: 18rem;">
+    <h1 class=" text-center midOne mt-2">
+      <i class="fa-solid fa-magnifying-glass text-success"></i>
+    </h1>
+    <sub class="text-center">Woolworths Image Finder</sub>
+    <img src="${url}" class="card-img-top mt-5" id="urlbar" alt="...">
+    <div class="card-body">
+    <input type="text" class="form-control mb-2 productID" placeholder="Enter Product ID" required>
+    <button class="btn btn-success w-100" onClick="handleOnFetch(this)"> Find Image</button>
+    </div>
+  </div>`
+}
   placeHolder.innerHTML=str;
 }
 
