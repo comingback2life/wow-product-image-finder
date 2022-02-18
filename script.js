@@ -8,7 +8,7 @@ const hideAlert=()=>{
 }
 const handleOnFetch=()=>{
   const productCode=document.querySelector('.productID').value;
-  if(!productCode){
+  if(!productCode || productCode===""){
     alertBox.classList.remove('d-none');
   }else{
     let generateZeros=""; //generates zeros to add at the beginnning of the product code
@@ -26,7 +26,7 @@ const handleOnFetch=()=>{
     .then(data=>{
       if(data.status===404){
         imageURL = "./404.png"
-        displayImage(imageURL);
+        displayImage(imageURL,undefined);
       }
       else{
         let productUrl = data.url;
@@ -40,14 +40,17 @@ const handleOnFetch=()=>{
   }
 }
 const displayImage=(url,productCode)=>{
+  console.log("Am I being called ?")
   const getTheBox = document.getElementById('holderCard');
   const getLink = document.querySelector('#urlbar');
   if(getTheBox){
-    const newUrl= `https://cdn0.woolworths.media/content/wowproductimages/medium/${productCode}.jpg`;
     if(productCode===undefined){
       getLink.setAttribute('src','./404.png');
+    }else{
+      const newUrl= `https://cdn0.woolworths.media/content/wowproductimages/medium/${productCode}.jpg`;
+      getLink.setAttribute('src',newUrl);
     }
-    getLink.setAttribute('src',newUrl);
+    
   }else{
     str+=` <div class="card" id="holderCard" style="width: 18rem;">
     <h1 class=" text-center midOne mt-2">
