@@ -14,7 +14,6 @@ const handleOnFetch=()=>{
     let generateZeros=""; //generates zeros to add at the beginnning of the product code
     if(productCode.length<6){
       const logProduct = 6-productCode.length;
-      console.log(logProduct);
       for(let i =0;i<logProduct;i++){
         generateZeros+="0"
       }
@@ -30,7 +29,6 @@ const handleOnFetch=()=>{
       }
       else{
         let productUrl = data.url;
-        console.log(productUrl);
         displayImage(productUrl,productID);
       }
  
@@ -40,7 +38,6 @@ const handleOnFetch=()=>{
   }
 }
 const displayImage=(url,productCode)=>{
-  console.log("Am I being called ?")
   const getTheBox = document.getElementById('holderCard');
   const getLink = document.querySelector('#urlbar');
   if(getTheBox){
