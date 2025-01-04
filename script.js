@@ -49,7 +49,7 @@ const displayImage=(url,productCode)=>{
     }
     
   }else{
-    str+=` <div class="card" id="holderCard" style="width: 18rem;">
+    str += ` <div class="card" id="holderCard" style="width: 18rem;">
     <h1 class=" text-center midOne mt-2">
       <i class="fa-solid fa-magnifying-glass text-success"></i>
     </h1>
@@ -60,7 +60,21 @@ const displayImage=(url,productCode)=>{
     <input type="text" class="form-control mb-2 productID" placeholder="Enter Product ID"  onClick = "hideAlert()" required>
     <button class="btn btn-success w-100" onClick="handleOnFetch(this)"> Find Image</button>
     </div>
-  </div>`
+      <div class="card-body">
+          <sub class="text-center" >Sample Product IDs</sub>
+          <ul>
+            <li>
+              133211- Cavendish Bananas
+            </li>
+            <li>
+              216872 - A2 Full Cream Milk 
+            </li>
+            <li>
+              0 - An Inside Joke
+            </li>
+          </ul>
+        </div>
+  </div>`;
   productID="";
   placeHolder.innerHTML=str;
 }
